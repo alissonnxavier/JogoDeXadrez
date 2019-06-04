@@ -10,6 +10,8 @@ namespace Xadrez
             Console.WriteLine("Hello World!");
 
             Board tab = new Board(8, 8);
+
+            Tela.imprimirTabuleiro(tab);
         }
     }
 }
