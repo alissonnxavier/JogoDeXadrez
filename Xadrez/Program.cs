@@ -9,11 +9,7 @@ namespace Xadrez
         {
             Console.WriteLine("Hello World!");
 
-            Posicao p = new Posicao(3, 4);
-
-            Console.WriteLine("Posiçoes: " + p);
-
-            Console.ReadLine();
+            Board tab = new Board(8, 8);
         }
     }
 }
