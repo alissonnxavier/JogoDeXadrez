@@ -8,7 +8,7 @@ namespace Tabuleiro
         public int colunas { get; set; }
         private Peca[,] pecas;
 
-        public Board (int linhas, int colunas) {
+        public Board(int linhas, int colunas) {
             this.linhas = linhas;
             this.colunas = colunas;
             pecas = new Peca[linhas, colunas];
@@ -18,7 +18,7 @@ namespace Tabuleiro
             return pecas[linha, coluna];
         }
 
-        public Peca peca (Posicao pos) {
+        public Peca peca(Posicao pos) {
             return pecas[pos.linha, pos.coluna];
         }
 
@@ -28,11 +28,21 @@ namespace Tabuleiro
         }
 
         public void colocarPeca(Peca p, Posicao pos) {
-            if (existePeca(pos)){
+            if (existePeca(pos)) {
                 throw new TabuleiroException("Já existe uma peça nessa posiçao");
             }
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
+        }
+
+        public Peca retirarPeca(Posicao pos) {
+            if (peca(pos) == null) {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.posicao = null;
+            pecas[pos.linha, pos.coluna] = null;
+            return aux;
         }
 
         public bool posicaoValida(Posicao pos) {
@@ -41,6 +51,8 @@ namespace Tabuleiro
             }
             return true;
         }
+
+
 
         public void validaPosicao(Posicao pos) {
             if (!posicaoValida(pos)) {
